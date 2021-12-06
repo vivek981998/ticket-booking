@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<body>
+<center>
+<h1> DREAM TRAVELS </h1><br>
+<br>
+       <label for="data">booking date</label>
+         <input type="date" id="data"><br>
+<br>
+        <label for="from">from</label>
+         <input type="text" id="from"> <br>
+<br>
+	<label for="to">to</label>
+          <input type="text" id="to"><br>
+<br>
+        <button disabled  type="button" id="b" onclick="inside()" >submit 
+        </button>
+<br>
+<br>
+<div id="mydiv" style="display:none" >
+        <label for="passanger" >passenger name</label>
+           <input type="text" id="passanger">
+<br>
+<br>
+         <label for ="mobile">mobile number</label>
+            <input type="text" id="mobile" ><br>
+<br>
+          <label for="email">email id</label>
+             <input type="text" id="email"><br>
+<br>
+          <label for="age">age</label>
+              <input type="number" id="age"><br>
+<br>
+<p> gender <br>
+  <input type="radio" name="sex" value="male" checked> Male
+  <br>
+  <input type="radio" name="sex" value="female"> Female 
+</p>
+<br>
+<button type="add" id="d" onclick="into()" >add extra passanger</button>
+<br>
+<br>
+ <button disabled  type="done"  id="c" onclick="imp()"  >done</button>
+<P id="outo" > </P>
+</center>
+</div>
+<script>
+const from = document.getElementById('from');
+const to = document.getElementById('to');
+const button = document.getElementById("b");
+from.addEventListener("click",out);
+to.addEventListener("click",out);  
+function out(){
+if ( from.value.length ==0 ||  to.value.length ==0)
+{
+button.disabled = true;
+}else{ button.disabled = false;}
+}
+function inside()
+ {
+var x = document.getElementById("mydiv");
+ x.style.display="block";
+}
+const done = document.getElementById('c');
+const mobile = document.getElementById('mobile');
+const email = document.getElementById('email');
+const age = document.getElementById('age');
+const passanger =document.getElementById('passanger');
+passanger.addEventListener("click",outside);
+mobile.addEventListener("click",outside);
+email.addEventListener("click",outside);
+age.addEventListener("click",outside);  
+function outside()
+{
+if (passanger.value.length ==0 || mobile.value.length ==0 || email.value.length ==0 || age.value.length ==0)
+{
+done.disabled = true;
+}else{ done.disabled = false;}} 
+const list = [  ];
+function into(){
+let object = {
+passanger : passanger.value,
+mobile_no : mobile.value,
+age : age.value,
+email : email.value,}
+list.push(object);
+console.log(list);
+ document.getElementById("passanger").value = "";
+ document.getElementById("mobile").value = "";
+ document.getElementById("age").value = "";
+ document.getElementById("email").value = "";
+
+}
+function imp(){ 
+let object = {
+passanger : passanger.value,
+mobile_no : mobile.value,
+age : age.value,
+email : email.value,
+}
+list.push(object); 
+console.log(list);
+const rr = JSON.stringify(list);
+document.getElementById("outo").innerHTML = document.write(rr); }
+</script> 
+</body>
+</html>
